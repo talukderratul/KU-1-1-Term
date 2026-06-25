@@ -1,107 +1,91 @@
-// ==============================
-// KU CSE Resource Hub
-// script.js
-// ==============================
-
-// Subject List
 const resources = [
-    {
-        subject: "Calculus",
-        semester: "1st Year",
-        link: "calculus.html"
-    },
-    {
-        subject: "Physics",
-        semester: "1st Year",
-        link: "physics.html"
-    },
-    {
-        subject: "English",
-        semester: "1st Year",
-        link: "english.html"
-    },
-    {
-        subject: "Discrete Mathematics",
-        semester: "1st Year",
-        link: "discrete.html"
-    },
-    {
-        subject: "Structured Programming",
-        semester: "1st Year",
-        link: "sp.html"
-    },
-    {
-        subject: "Computer Fundamentals",
-        semester: "1st Year",
-        link: "fundamentals.html"
-    }
+
+{
+subject:"Calculus",
+semester:"1st Year",
+link:"calculus.html"
+},
+
+{
+subject:"Physics",
+semester:"1st Year",
+link:"physics.html"
+},
+
+{
+subject:"English",
+semester:"1st Year",
+link:"english.html"
+},
+
+{
+subject:"Discrete Mathematics",
+semester:"1st Year",
+link:"discrete.html"
+},
+
+{
+subject:"Structured Programming",
+semester:"1st Year",
+link:"sp.html"
+},
+
+{
+subject:"Computer Fundamentals",
+semester:"1st Year",
+link:"fundamentals.html"
+}
+
 ];
 
-// Resource Container
-const container = document.getElementById("resourceContainer");
+const container =
+document.getElementById("resourceContainer");
 
-// Show All Resources
-function displayResources(data) {
+function displayResources(data){
 
-    container.innerHTML = "";
+container.innerHTML="";
 
-    data.forEach(item => {
+data.forEach(item=>{
 
-        container.innerHTML += `
+container.innerHTML+=`
 
-        <div class="card">
+<div class="card">
 
-            <h2>${item.subject}</h2>
+<h2>${item.subject}</h2>
 
-            <p>${item.semester}</p>
+<p>${item.semester}</p>
 
-            <a href="${item.link}" class="btn">
-                View Resources
-            </a>
+<a class="btn" href="${item.link}">
 
-        </div>
+View Resources
 
-        `;
+</a>
 
-    });
+</div>
+
+`;
+
+});
 
 }
 
-// Load Website
 displayResources(resources);
 
-// ==============================
-// Search Bar
-// ==============================
+document
+.getElementById("searchBox")
+.addEventListener("keyup",function(){
 
-const searchBox = document.getElementById("searchBox");
+const value=this.value.toLowerCase();
 
-if(searchBox){
+const filtered=
+resources.filter(item=>
 
-    searchBox.addEventListener("keyup", function(){
+item.subject
+.toLowerCase()
+.includes(value)
 
-        const value = this.value.toLowerCase();
+);
 
-        const filtered = resources.filter(item =>
+displayResources(filtered);
 
-            item.subject.toLowerCase().includes(value)
-
-        );
-
-        displayResources(filtered);
-
-    });
-
-}
-
-// ==============================
-// Dark Mode
-// ==============================
-
-function darkMode(){
-
-    document.body.classList.toggle("dark");
-
-}
-
-console.log("KU CSE Resource Hub Loaded Successfully");
+});
